@@ -16,8 +16,6 @@ test('should show post', async ({ page }) => {
   });
   await page.goto(BASE_URL);
 
-  await page.waitForResponse(`${BASE_URL}/api/getPost`)
-
   await page.waitForSelector('.item', { state: 'visible' });
 
   const titleElement = page.locator('.item >> text=/titulo/i');
