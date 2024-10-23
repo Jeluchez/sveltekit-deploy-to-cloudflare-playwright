@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { BASE_URL } from '../../src/utils/constant';
 
 test('test', async ({ page }) => {
   await page.route('*/**/api/getUser', async route => {
     const json = { name: 'Ana', email: 'ana@gmail.com', age:'32' };
     await route.fulfill({ json });
   });
-  await page.goto('http://localhost:5173/');
+  await page.goto(BASE_URL);
   await expect(page.getByText('Ana', { exact: true })).toBeVisible();
 });
 test('should show post', async ({ page }) => {
@@ -13,9 +14,9 @@ test('should show post', async ({ page }) => {
     url: '*/**/api/**/**',
     update: false,
   });
-  await page.goto('http://localhost:5173/');
+  await page.goto(BASE_URL);
 
-  await page.waitForResponse('http://localhost:5173/api/getPosts')
+  await page.waitForResponse(`${BASE_URL}/api/getPost`)
 
   await page.waitForSelector('.item', { state: 'visible' });
 
