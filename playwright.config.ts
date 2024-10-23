@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-
+import { BASE_URL } from './src/utils/constant';
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: BASE_URL,
     trace: 'on-first-retry',
   },
 
@@ -22,7 +22,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run start',
+    command: 'npm run dev',
     port: 5173,
     reuseExistingServer: true,
   },
