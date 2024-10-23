@@ -5,11 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-<<<<<<< HEAD
-  run-playwright-tests::
-=======
   run-playwright-tests:
->>>>>>> fcc5ff8 (Add playwright workflow)
     timeout-minutes: 60
     runs-on: ubuntu-latest
     defaults:
